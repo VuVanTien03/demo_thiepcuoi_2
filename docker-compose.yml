@@ -1,0 +1,18 @@
+services:
+  wedding-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: thiepcuoi_cinelove
+    restart: always
+    ports:
+      - "8080:80"
+    environment:
+      - NODE_ENV=production
+
+  # Tuỳ chọn nếu bạn muốn kết nối thẳng tới Cloudflare Tunnel (Zero Trust):
+  # cloudflared:
+  #   image: cloudflare/cloudflared:latest
+  #   container_name: cloudflared_tunnel
+  #   restart: always
+  #   command: tunnel run --token <YOUR_CLOUDFLARE_TUNNEL_TOKEN>
