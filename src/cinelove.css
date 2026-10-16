@@ -142,7 +142,22 @@ div[data-node-id="4Z9APOIBot"] [contenteditable] {
 /* --- STYLE BLOCK --- */
 .simple-map-container{position:relative;overflow:hidden;}
 /* --- STYLE BLOCK --- */
+/* --- LUXURY RSVP FORM STYLES --- */
+.rsvp-form-container{width:400px !important;left:50px !important;top:6870px !important;}
 .rsvp-form-container:hover{z-index:9999999 !important;}
+.rsvp-form{background:#ffffff !important;border:1.5px solid #ecd8c5 !important;border-radius:22px !important;box-shadow:0 14px 40px rgba(136,5,5,0.08), 0 4px 12px rgba(0,0,0,0.03) !important;padding:28px 24px 30px !important;font-family:inherit !important;position:relative !important;box-sizing:border-box !important;width:100% !important;}
+.rsvp-form::before{content:"R S V P";position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:#880505;color:#ffffff;font-size:11px;font-weight:700;letter-spacing:3px;padding:3px 16px;border-radius:20px;box-shadow:0 3px 10px rgba(136,5,5,0.25);}
+.rsvp-form h3{font-family:'Signora',serif !important;color:#880505 !important;font-size:26px !important;font-weight:600 !important;margin-bottom:4px !important;letter-spacing:0.5px !important;text-align:center !important;}
+.rsvp-form .rsvp-subtitle{font-family:'Signora',serif !important;font-size:14px !important;color:#777777 !important;text-align:center !important;margin-bottom:18px !important;font-style:italic !important;}
+.rsvp-form label{font-size:13.5px !important;font-weight:600 !important;color:#444444 !important;margin-bottom:7px !important;display:block !important;}
+.rsvp-form input[name="rsvp-name"]{width:100% !important;box-sizing:border-box !important;padding:11px 16px !important;border-radius:12px !important;border:1.5px solid #e2d7cc !important;background-color:#faf7f2 !important;font-size:14px !important;color:#333333 !important;outline:none !important;transition:all 0.25s ease !important;}
+.rsvp-form input[name="rsvp-name"]:focus{border-color:#880505 !important;background-color:#ffffff !important;box-shadow:0 0 0 3px rgba(136,5,5,0.12) !important;}
+.rsvp-form .rsvp-radio-options{display:flex !important;flex-direction:column !important;gap:10px !important;width:100% !important;}
+.rsvp-form .rsvp-radio-card{display:flex !important;align-items:center !important;gap:10px !important;padding:11px 16px !important;border-radius:12px !important;border:1.5px solid #e5dbcf !important;background:#faf8f5 !important;cursor:pointer !important;font-size:13.5px !important;color:#444444 !important;transition:all 0.2s ease !important;margin:0 !important;}
+.rsvp-form .rsvp-radio-card:hover{border-color:#c98888 !important;background:#fff8f8 !important;}
+.rsvp-form .rsvp-radio-card.active{border-color:#880505 !important;background:#fff3f5 !important;color:#880505 !important;font-weight:600 !important;}
+.rsvp-form button[type="submit"]{background:linear-gradient(135deg, #a31818, #880505) !important;color:#ffffff !important;padding:13px 20px !important;border-radius:14px !important;border:none !important;font-size:15px !important;font-weight:700 !important;letter-spacing:0.5px !important;cursor:pointer !important;width:100% !important;box-shadow:0 4px 16px rgba(136,5,5,0.28) !important;transition:all 0.25s ease !important;margin-top:10px !important;}
+.rsvp-form button[type="submit"]:hover{background:linear-gradient(135deg, #b82020, #960606) !important;box-shadow:0 6px 20px rgba(136,5,5,0.38) !important;transform:translateY(-1px) !important;}
 /* --- STYLE BLOCK --- */
 #main-scroll-container #root-page-container::before{content:"";position:absolute;left:50%;bottom:3px;-webkit-transform:translateX(-50%);-ms-transform:translateX(-50%);transform:translateX(-50%);width:50px;height:4px;background:rgba(0,0,0,0.1);border-radius:2px;-webkit-transition:all 0.2s;transition:all 0.2s;}#main-scroll-container #root-page-container:hover::before{background:rgba(0,0,0,0.3);}
 /* --- STYLE BLOCK --- */
