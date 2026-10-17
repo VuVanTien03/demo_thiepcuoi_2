@@ -54,6 +54,19 @@ div[data-node-id="gjDbaemHrj"] [contenteditable] {
   display: block !important;
 }
 
+/* Ensure graphic decorations are never cropped */
+.photo-bg-wrap[style*="dec_"] {
+  background-size: contain !important;
+  background-position: center center !important;
+}
+
+.canvas-scale-wrapper {
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+}
+
+
 .photo-component[style*="-webkit-mask-box-image-source:url"],
 .photo-component[style*="mask-image:url"] {
   -webkit-mask-size: 100% 100% !important;
@@ -186,6 +199,51 @@ div[data-node-id="4Z9APOIBot"] [contenteditable] {
 .watermark{position:absolute;bottom:148px;right:7px;text-align:center;-webkit-transform:rotate(-90deg);-ms-transform:rotate(-90deg);transform:rotate(-90deg);width:20px;white-space:nowrap;height:20px;-webkit-transition:all 0.3s ease;transition:all 0.3s ease;z-index:999;}.watermark.hide-toolbar{bottom:30px;}.watermark.hide-toolbar-content{bottom:98px;}.watermark-content{text-align:center;color:#1c1c1c;font-size:14px;font-weight:300;}.watermark-link{color:#414141;-webkit-text-decoration:none;text-decoration:none;font-weight:500;margin-left:2px;-webkit-transition:color 0.3s ease;transition:color 0.3s ease;}.watermark-link:hover{color:#000;}
 /* --- STYLE BLOCK --- */
 #app-view-index{height:100% !important;}.pc-container #cinelove-toolbar .message-box-button{width:130px;}.pc-container #cinelove-toolbar .message-box-button,.pc-container #cinelove-toolbar #animation-gift-preview-btn,.pc-container #cinelove-toolbar #cinelove-gift-button,.pc-container #cinelove-toolbar #cinelove-like-button{font-size:12px;height:35px;line-height:35px;border-radius:25px;}.pc-container #cinelove-toolbar #animation-gift-preview-btn span{font-size:12px;}.pc-container #cinelove-toolbar #cinelove-like-button,.pc-container #cinelove-toolbar #cinelove-gift-button{width:35px;}.pc-container .bar-messwin *{-webkit-transform:scale(0.95);-ms-transform:scale(0.95);transform:scale(0.95);}.pc-container .bar-gift-new .select-type .option{font-size:17px !important;cursor:pointer;}.pc-container .bar-gift-new .gift-li .title{font-size:10px !important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-align:center;width:70px;}.pc-container .bar-gift-new .give-tip{font-size:10px !important;}.pc-container .bar-gift-new .give-username{-webkit-transform:scale(0.95);-ms-transform:scale(0.95);transform:scale(0.95);}.pc-container .animate-slide-gift.gift-minibar *{-webkit-transform:scale(0.95);-ms-transform:scale(0.95);transform:scale(0.95);}.pc-container #cinelove-canvas-preview,.pc-container #cinelove-canvas{-webkit-transform:scale(0.95);-ms-transform:scale(0.95);transform:scale(0.95);}
+
+@media (max-width: 540px) {
+  #cinelove-toolbar {
+    bottom: 0 !important;
+    padding-bottom: env(safe-area-inset-bottom, 0px) !important;
+    height: calc(60px + env(safe-area-inset-bottom, 0px)) !important;
+  }
+  #cinelove-toolbar .toolbar {
+    padding: 6px 10px calc(6px + env(safe-area-inset-bottom, 0px)) 10px !important;
+    gap: 6px !important;
+  }
+  #cinelove-toolbar .message-box-button {
+    flex: 1 1 auto !important;
+    min-width: 100px !important;
+    max-width: 140px !important;
+    padding: 0 10px !important;
+  }
+  #cinelove-toolbar .message-box-button span {
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+    font-size: 11.5px !important;
+  }
+  #cinelove-toolbar .toolbar-right {
+    gap: 6px !important;
+    flex-shrink: 0 !important;
+  }
+  #cinelove-toolbar #animation-gift-preview-btn {
+    padding: 0 8px !important;
+    font-size: 11.5px !important;
+  }
+  #cinelove-toolbar #animation-gift-preview-btn span {
+    font-size: 11.5px !important;
+  }
+  #blessing-box {
+    bottom: calc(68px + env(safe-area-inset-bottom, 0px)) !important;
+    left: 10px !important;
+    max-width: calc(100% - 70px) !important;
+  }
+  #audio-control-wrapper {
+    top: max(12px, env(safe-area-inset-top, 12px)) !important;
+    right: max(12px, env(safe-area-inset-right, 12px)) !important;
+  }
+}
+
 /* --- STYLE BLOCK --- */
 .css-var-root{--ant-blue:#1677FF;--ant-purple:#722ED1;--ant-cyan:#13C2C2;--ant-green:#52C41A;--ant-magenta:#EB2F96;--ant-pink:#EB2F96;--ant-red:#F5222D;--ant-orange:#FA8C16;--ant-yellow:#FADB14;--ant-volcano:#FA541C;--ant-geekblue:#2F54EB;--ant-gold:#FAAD14;--ant-lime:#A0D911;--ant-color-primary:#1677ff;--ant-color-success:#52c41a;--ant-color-warning:#faad14;--ant-color-error:#ff4d4f;--ant-color-info:#1677ff;--ant-color-link:#1677ff;--ant-color-text-base:#000;--ant-color-bg-base:#fff;--ant-font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',

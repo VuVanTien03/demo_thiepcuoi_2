@@ -106,8 +106,8 @@ export default function FallingPetals() {
         aria-label="Toggle Petals"
         style={{
           position: 'absolute',
-          top: 14,
-          left: 14,
+          top: 'max(14px, env(safe-area-inset-top, 14px))',
+          left: 'max(14px, env(safe-area-inset-left, 14px))',
           zIndex: 60,
           background: 'rgba(255, 255, 255, 0.85)',
           backdropFilter: 'blur(6px)',

@@ -60,6 +60,37 @@ export default function CineloveWedding28() {
 
   const audioRef = useRef(null);
   const canvasRef = useRef(null);
+  const scrollContainerRef = useRef(null);
+  const [scale, setScale] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const w = window.innerWidth;
+      return w < 500 ? w / 500 : 1;
+    }
+    return 1;
+  });
+
+  // Dynamically calculate responsive scale factor so the 500px canvas fits any phone width perfectly
+  useEffect(() => {
+    const handleResize = () => {
+      if (scrollContainerRef.current) {
+        const w = scrollContainerRef.current.clientWidth;
+        if (w > 0) {
+          setScale(w < 500 ? w / 500 : 1);
+        }
+      } else if (typeof window !== 'undefined') {
+        const w = window.innerWidth;
+        setScale(w < 500 ? w / 500 : 1);
+      }
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    window.addEventListener('orientationchange', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('orientationchange', handleResize);
+    };
+  }, []);
 
   // Auto-play audio on first user gesture
   useEffect(() => {
@@ -288,15 +319,49 @@ export default function CineloveWedding28() {
           </div>
 
           {/* Main Scrollable Canvas */}
-          <div id="main-scroll-container" style={{ width: '100%', height: '100%', overflowY: 'auto', overflowX: 'hidden', position: 'relative' }}>
-            
-            {/* 1:1 Exact CineLove Canvas */}
+          <div 
+            id="main-scroll-container" 
+            ref={scrollContainerRef}
+            style={{ 
+              width: '100%', 
+              height: '100%', 
+              overflowY: 'auto', 
+              overflowX: 'hidden', 
+              position: 'relative',
+              WebkitOverflowScrolling: 'touch'
+            }}
+          >
+            {/* Perfectly scaled wrapper to maintain aspect ratio and prevent horizontal overflow */}
             <div 
-              id="root-page-container" 
-              ref={canvasRef}
-              style={{ backgroundColor: '#f9f8f3', width: '500px', height: '7680px', position: 'relative', margin: '0 auto' }}
-              dangerouslySetInnerHTML={{ __html: canvasRawHtml }}
-            />
+              className="canvas-scale-wrapper"
+              style={{
+                width: `${Math.round(500 * scale)}px`,
+                height: `${Math.round(7680 * scale)}px`,
+                margin: '0 auto',
+                marginBottom: '80px',
+                position: 'relative',
+                overflow: 'hidden',
+                backgroundColor: '#f9f8f3'
+              }}
+            >
+              {/* 1:1 Exact CineLove Canvas */}
+              <div 
+                id="root-page-container" 
+                ref={canvasRef}
+                style={{ 
+                  backgroundColor: '#f9f8f3', 
+                  width: '500px', 
+                  height: '7680px', 
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  transform: `scale(${scale})`,
+                  transformOrigin: 'top left',
+                  willChange: 'transform'
+                }}
+                dangerouslySetInnerHTML={{ __html: canvasRawHtml }}
+              />
+            </div>
           </div>
 
           {/* Floating Live Blessings Stream (Smooth Sliding Track) */}
@@ -483,20 +548,25 @@ export default function CineloveWedding28() {
             display: none !important;
           }
         }
-        @media (max-width: 500px) {
+        @media (max-width: 540px) {
           .pc-container {
             padding: 0 !important;
             height: 100vh !important;
+            height: 100dvh !important;
+            min-height: 100vh !important;
+            min-height: 100dvh !important;
             width: 100vw !important;
+            max-width: 100vw !important;
+            background-color: #f9f8f3 !important;
           }
           .pc-content {
             width: 100vw !important;
+            max-width: 100vw !important;
             height: 100vh !important;
+            height: 100dvh !important;
             border-radius: 0 !important;
             border: none !important;
-          }
-          #root-page-container {
-            zoom: calc(100vw / 500) !important;
+            box-shadow: none !important;
           }
         }
       `}</style>
