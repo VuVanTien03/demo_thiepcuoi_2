@@ -92,6 +92,73 @@ export default function CineloveWedding28() {
     };
   }, []);
 
+  // Silky-smooth scroll-triggered entrance animations for text & images
+  useEffect(() => {
+    if (!canvasRef.current || !scrollContainerRef.current) return;
+
+    const transitionElements = canvasRef.current.querySelectorAll('[data-transition-key]');
+    if (!transitionElements.length) return;
+
+    const revealElement = (el) => {
+      el.classList.add('is-revealed');
+    };
+
+    // Check which elements are already visible immediately
+    const checkVisible = () => {
+      if (!scrollContainerRef.current) return;
+      const containerRect = scrollContainerRef.current.getBoundingClientRect();
+      transitionElements.forEach((el) => {
+        if (!el.classList.contains('is-revealed')) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top < containerRect.bottom + 80 && rect.bottom > containerRect.top - 80) {
+            revealElement(el);
+          }
+        }
+      });
+    };
+
+    let observer;
+    if (typeof window !== 'undefined' && 'IntersectionObserver' in window) {
+      observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              revealElement(entry.target);
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        {
+          root: scrollContainerRef.current,
+          rootMargin: '80px 0px 80px 0px',
+          threshold: 0.05
+        }
+      );
+
+      transitionElements.forEach((el) => {
+        observer.observe(el);
+      });
+    }
+
+    // Run initial visible check on mount
+    checkVisible();
+
+    const scrollEl = scrollContainerRef.current;
+    scrollEl.addEventListener('scroll', checkVisible, { passive: true });
+
+    // Safety fallback: guarantee all elements are revealed after 4s
+    const safetyTimer = setTimeout(() => {
+      transitionElements.forEach(revealElement);
+    }, 4000);
+
+    return () => {
+      if (observer) observer.disconnect();
+      scrollEl.removeEventListener('scroll', checkVisible);
+      clearTimeout(safetyTimer);
+    };
+  }, []);
+
+
   // Auto-play audio on first user gesture
   useEffect(() => {
     const handleGesture = () => {
